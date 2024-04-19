@@ -4,7 +4,7 @@ public class MovieManager {
 
     private MovieItem[] items = new MovieItem[0];
 
-    private int returnAmount;
+    private int returnAmount = 5;
 
     public MovieManager() {
     }
@@ -37,18 +37,18 @@ public class MovieManager {
 
 
     public MovieItem[] findLast() {
-        if (this.returnAmount == 0) {
-            this.returnAmount = 5;
-        }
+        int amount = 0;
 
         MovieItem[] last = findAll();
 
         if (this.returnAmount > last.length) {
-            this.returnAmount = last.length;
+            amount = last.length;
+        } else {
+            amount = this.returnAmount;
         }
 
-        MovieItem[] result = new MovieItem[this.returnAmount];
-        for (int i = 0; i < this.returnAmount; i++) {
+        MovieItem[] result = new MovieItem[amount];
+        for (int i = 0; i < amount; i++) {
             result[i] = last[last.length - 1 - i];
         }
         return result;
